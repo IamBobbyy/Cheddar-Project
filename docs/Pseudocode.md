@@ -20,7 +20,7 @@
 ++Goal: Allow users to purchase and mint a new Creator NFT.
 
 | Step | Pseudocode Logic | Description |
-|-----|-----------|------|------------|
+|------|-------------------|------------|
 | 1 | `asserts! (next-token-id <= MAX_SUPPLY) ERR-SOLD-OUT` | Prevents over-minting. |
 | 2 | `try! (stx-transfer-from tx-sender FEE-RECEIVER-ADDRESS MINT-PRICE)` | Ensure sender pays the price to the Treasury. |
 | 3 | `(nft-mint cheddar-creator-nft next-token-id tx-sender)` | Mints the new NFT to the sender. |
