@@ -11,7 +11,7 @@
 | `(define-data-var)` | `next-token-id` | `unit` | Counter for minting (starts at u1). |
 | `(define-constant)` | `MAX_SPPLY`  | `u5000` | Hard cap on the number of Creator NFTs. |
 | `(define-constant)` | `MINT-PRICE` | `u1000` | Price in STX for minting a single NFT. |
-| `(define-constant)` | `FEE-RECEIVER-ADDRESS` | `principal` | Address of the DAO Treasury to reseive fees. |
+| `(define-constant)` | `FEE-RECEIVER-ADDRESS` | `principal` | Address of the DAO Treasury to receive fees. |
 
 ---
 
@@ -24,7 +24,7 @@
 | 1 | `asserts! (next-token-id <= MAX_SUPPLY) ERR-SOLD-OUT` | Prevents over-minting. |
 | 2 | `try! (stx-transfer-from tx-sender FEE-RECEIVER-ADDRESS MINT-PRICE)` | Ensure sender pays the price to the Treasury. |
 | 3 | `(nft-mint cheddar-creator-nft next-token-id tx-sender)` | Mints the new NFT to the sender. |
-| 4 | `(set-next-token-id (+ next-token-id u1))` | Increment otken counter
+| 4 | `(set-next-token-id (+ next-token-id u1))` | Increment otken counter. |
 
 ## C. Read-Only Function: `is-creator(address)` (Membership CHeck)
 
@@ -46,6 +46,7 @@
 ## A. Data Definitions (State & Constants)
 
 | Clarity Syntax | Data Name | Type | Description |
+|----------------|----------|-------|------------|
 | `(define-map)` | `proposals` | `uint -> {status, yes-votes, no-votes, ...}` | Stores the current state of all proposals. |
 | `(define-map)` | `voter-records` | `{ proposal-id: uint, voter: principal } -> bool` | Tracks who has voted to prevent double voting. | 
 | `(define-constant)` | `VOTING_PERIOD-BLOCKS` | `u10000` | Duration of the voting period (in Stacks blocks). |
