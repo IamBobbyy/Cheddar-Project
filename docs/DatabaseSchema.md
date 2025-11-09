@@ -54,7 +54,7 @@ KYVE listens to key function calls in `dao-cheddar-governance.clar`
 
 ---
 
-## III. Data Connection Summary
+## Summary: Data Connection 
 | Feature | Storage Method | Fronted Use Case |
 |---------|----------------|-----------------|
 | Creator Status Check | On-Chain: Use Micro-Stacks to call `nft-cheddar-creator::is-creator()` (Read-Only) | Display NFT ownership history |
